@@ -1,47 +1,45 @@
 # Privacy Model
 
-RemoteMe is designed so the public repository contains only app code, prompts, templates, and documentation.
+RemoteMe is an app for working with job posts, resume/profile inputs, application drafts, and application tracking.
 
-Private user data should remain local.
+This repository should contain the app only.
 
-## Keep Out of Git
+## Repository Boundary
 
-Do not commit:
+The repo may contain:
 
-- Real resumes
-- Personal emails or phone numbers
-- Home addresses
-- Private work history
-- Salary history
-- Application trackers with real company/application data
-- Generated cover letters
-- Generated resume PDFs or DOCX files
+- Source code
+- Prompts
+- Schemas
+- Documentation
+- Empty folders
+- Placeholder examples
+- Fake sample data clearly marked as sample data
+
+The repo should not contain:
+
+- A real user's resume
+- A real user's personal profile
+- Real application history
+- Real generated cover letters
+- Real generated resume drafts
+- Personal emails, phone numbers, addresses, or private work history
 - API keys or environment secrets
 
-## Local Data Folder
+## Runtime Data
 
-RemoteMe uses this local-only folder pattern:
+In the finished app, user data should enter through the product interface, such as:
 
-```txt
-local_data/
-├── master_resume.md
-├── proof_points.md
-└── applications.csv
-```
+- Uploading a resume
+- Pasting a resume/profile
+- Importing a job post
+- Pasting a job post URL or description
+- Saving an application record inside the app's configured storage layer
 
-The repository `.gitignore` excludes `local_data/`.
+## Development Rule
 
-## Template Files
-
-Public template files live in:
-
-```txt
-profile/
-tracker/
-```
-
-These files are safe examples. Users should copy them into `local_data/` before using RemoteMe with real personal data.
+Use fake placeholder examples for development. Do not commit real job-search data.
 
 ## Claim Safety
 
-RemoteMe should improve framing, not invent facts. Generated drafts must be reviewed before submission.
+RemoteMe may help reframe a user's materials, but it should not invent facts, skills, titles, certifications, metrics, or employment history.
