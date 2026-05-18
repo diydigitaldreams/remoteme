@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://remoteme.app/schemas/job_post.schema.json",
+  "title": "JobPost",
+  "description": "Job post input imported, pasted, or entered through the RemoteMe app.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "company",
+    "role",
+    "description"
+  ],
+  "properties": {
+    "company": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Company or organization name."
+    },
+    "role": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Job title."
+    },
+    "job_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Source URL for the job post, if available.",
+      "default": null
+    },
+    "location": {
+      "type": ["string", "null"],
+      "description": "Location text exactly as presented in the job post.",
+      "default": null
+    },
+    "remote_status": {
+      "type": "string",
+      "enum": ["remote", "hybrid", "onsite", "unclear"],
+      "description": "Remote-work status inferred from or supplied with the job post.",
+      "default": "unclear"
+    },
+    "location_restrictions": {
+      "type": "array",
+      "description": "Regions, countries, states, timezones, travel rules, clearance rules, or other location constraints.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Full job description text or summarized description."
+    },
+    "responsibilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "nice_to_have": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "compensation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "type": ["string", "null"],
+          "default": null
+        },
+        "minimum": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "default": null
+        },
+        "maximum": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "default": null
+        },
+        "period": {
+          "type": "string",
+          "enum": ["hourly", "monthly", "yearly", "contract", "unknown"],
+          "default": "unknown"
+        },
+        "raw_text": {
+          "type": ["string", "null"],
+          "default": null
+        }
+      },
+      "default": {}
+    },
+    "employment_type": {
+      "type": "string",
+      "enum": ["full_time", "part_time", "contract", "temporary", "internship", "unknown"],
+      "default": "unknown"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["manual", "url_import", "file_upload", "api", "sample"],
+      "default": "manual"
+    }
+  }
+}
