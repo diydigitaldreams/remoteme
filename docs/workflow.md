@@ -2,86 +2,68 @@
 
 RemoteMe supports a focused remote job application workflow.
 
-## 1. Initialize Local Data
+This document describes the intended product flow, not a requirement to commit personal files to the repository.
 
-Run:
+## 1. Add a Job Post
 
-```bash
-python scripts/init_local_data.py
-```
+The user imports, pastes, or saves a remote job post in the app.
 
-This creates local private files under:
+RemoteMe should capture:
 
-```txt
-local_data/
-```
+- Company
+- Role title
+- Job URL
+- Job description
+- Remote status
+- Location restrictions
+- Required skills
+- Preferred skills
+- Compensation, if listed
 
-## 2. Add Your Resume and Proof Points
+## 2. Add Resume/Profile Input
 
-Edit:
+The user supplies resume/profile material through the app interface.
 
-```txt
-local_data/master_resume.md
-local_data/proof_points.md
-```
+RemoteMe should treat this as user-provided runtime data, not repository content.
 
-Use truthful source material only.
+## 3. Score the Job
 
-## 3. Save a Job Description
+RemoteMe scores the job against the supplied resume/profile input.
 
-Place a job description in:
-
-```txt
-jobs/raw/
-```
-
-Example:
-
-```txt
-jobs/raw/example-company-support-specialist.md
-```
-
-## 4. Generate an Application Package
-
-Run:
-
-```bash
-python scripts/generate_package.py jobs/raw/example-company-support-specialist.md --company "Example Company" --role "Support Specialist"
-```
-
-This creates a markdown package in:
-
-```txt
-jobs/drafts/
-```
-
-## 5. Score the Job
-
-Use the scoring prompt and generated package with an AI assistant.
-
-Review:
+The output should include:
 
 - Fit score
 - Recommendation
-- Remote/location risks
-- Resume angle
-- Cover letter angle
+- Main fit reasons
+- Risks or gaps
+- Remote/location notes
 - Questions to verify before applying
 
-## 6. Track the Application
+## 4. Draft Application Materials
 
-Run:
+RemoteMe drafts:
 
-```bash
-python scripts/add_to_tracker.py --company "Example Company" --role "Support Specialist" --fit-score 82 --recommendation "Apply" --status "Scored"
-```
+- Resume-tailoring notes
+- Cover letter draft
+- Follow-up draft when needed
 
-The tracker lives locally at:
+The user must review all drafts before using them.
 
-```txt
-local_data/applications.csv
-```
+## 5. Track the Application
 
-## 7. Apply With Focus
+RemoteMe tracks:
 
-RemoteMe is not for mass applications. Apply where the fit is strong, the job is real, and the materials can be tailored honestly.
+- Company
+- Role
+- Job URL
+- Fit score
+- Recommendation
+- Status
+- Date found
+- Date applied
+- Follow-up date
+- Notes
+
+## 6. Apply With Focus
+
+RemoteMe is not for mass applications. It is for choosing better roles, tailoring honestly, and keeping the job search organized.
