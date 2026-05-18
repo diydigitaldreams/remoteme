@@ -1,0 +1,24 @@
+{
+  "summary": "Example remote operations candidate with support, documentation, and workflow coordination experience.",
+  "target_roles": [
+    "Remote Support Specialist",
+    "Operations Coordinator",
+    "Customer Success Associate"
+  ],
+  "skills": [
+    "support triage",
+    "documentation",
+    "remote communication",
+    "ticket tracking"
+  ],
+  "experience_highlights": [
+    "Handled support requests and organized follow-up tasks for a distributed team.",
+    "Created documentation to make repeat workflows easier to complete.",
+    "Tracked application-style records across status, notes, and follow-up dates."
+  ],
+  "claim_boundaries": [
+    "Do not claim software engineering experience.",
+    "Do not claim management titles.",
+    "Do not invent metrics."
+  ]
+}
