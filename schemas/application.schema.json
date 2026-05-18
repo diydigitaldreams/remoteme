@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://remoteme.app/schemas/application.schema.json",
+  "title": "ApplicationRecord",
+  "description": "Application tracking record created by the RemoteMe app.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "company",
+    "role",
+    "status"
+  ],
+  "properties": {
+    "company": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "job_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "default": null
+    },
+    "remote_status": {
+      "type": "string",
+      "enum": ["remote", "hybrid", "onsite", "unclear"],
+      "default": "unclear"
+    },
+    "location_risk": {
+      "type": "string",
+      "enum": ["none", "low", "medium", "high", "unclear"],
+      "default": "unclear"
+    },
+    "fit_score": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "default": null
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": ["Strong Apply", "Apply", "Maybe", "Low Priority", "Skip", "Unscored"],
+      "default": "Unscored"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Found",
+        "Scored",
+        "Drafted",
+        "Applied",
+        "Followed Up",
+        "Interviewing",
+        "Offer",
+        "Rejected",
+        "Ghosted",
+        "Skip"
+      ]
+    },
+    "date_found": {
+      "type": ["string", "null"],
+      "format": "date",
+      "default": null
+    },
+    "date_applied": {
+      "type": ["string", "null"],
+      "format": "date",
+      "default": null
+    },
+    "follow_up_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "default": null
+    },
+    "materials": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resume_notes_id": {
+          "type": ["string", "null"],
+          "default": null
+        },
+        "cover_letter_id": {
+          "type": ["string", "null"],
+          "default": null
+        },
+        "follow_up_id": {
+          "type": ["string", "null"],
+          "default": null
+        }
+      },
+      "default": {}
+    },
+    "notes": {
+      "type": "string",
+      "default": ""
+    },
+    "created_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "default": null
+    },
+    "updated_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "default": null
+    }
+  }
+}
