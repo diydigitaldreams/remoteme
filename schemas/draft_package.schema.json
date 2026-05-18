@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://remoteme.app/schemas/draft_package.schema.json",
+  "title": "DraftPackage",
+  "description": "Structured draft outputs created by RemoteMe after scoring a job.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "resume_strategy",
+    "tailored_resume_notes",
+    "cover_letter_draft"
+  ],
+  "properties": {
+    "resume_strategy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "suggested_summary": {
+      "type": "string",
+      "default": ""
+    },
+    "tailored_skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "items"],
+        "properties": {
+          "category": {"type": "string", "minLength": 1},
+          "items": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "default": []
+          }
+        }
+      },
+      "default": []
+    },
+    "tailored_resume_notes": {
+      "type": "array",
+      "description": "Suggested truthful resume framing notes or bullet rewrites. These are drafts and require user review.",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1
+    },
+    "cover_letter_draft": {
+      "type": "string",
+      "minLength": 1
+    },
+    "follow_up_draft": {
+      "type": ["string", "null"],
+      "default": null
+    },
+    "keywords_to_include": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "default": []
+    },
+    "keywords_to_avoid": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "default": []
+    },
+    "review_notes": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "default": []
+    }
+  }
+}
