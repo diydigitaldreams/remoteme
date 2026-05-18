@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://remoteme.app/schemas/user_profile.schema.json",
+  "title": "UserProfile",
+  "description": "Runtime user profile input supplied through the RemoteMe app. This schema defines structure only and must not contain real user data in the repository.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "summary",
+    "target_roles",
+    "skills",
+    "experience_highlights",
+    "claim_boundaries"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short user-provided career summary."
+    },
+    "target_roles": {
+      "type": "array",
+      "description": "Remote role titles the user wants to target.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "skills": {
+      "type": "array",
+      "description": "Truthful skills supplied by the user.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "experience_highlights": {
+      "type": "array",
+      "description": "Truthful work, project, or education highlights supplied by the user.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "education": {
+      "type": "array",
+      "description": "User-provided education, training, or credentials.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "certifications": {
+      "type": "array",
+      "description": "User-provided certifications.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "preferences": {
+      "type": "object",
+      "description": "User-provided job preferences for scoring and filtering.",
+      "additionalProperties": false,
+      "properties": {
+        "remote_regions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default": []
+        },
+        "timezones": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default": []
+        },
+        "minimum_compensation": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "default": null
+        },
+        "employment_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["full_time", "part_time", "contract", "temporary", "internship", "unknown"]
+          },
+          "default": []
+        },
+        "avoid": {
+          "type": "array",
+          "description": "User-provided dealbreakers or low-interest areas.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default": []
+        }
+      },
+      "default": {}
+    },
+    "claim_boundaries": {
+      "type": "array",
+      "description": "Claims the app must not make unless explicitly supported by user-provided input.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  }
+}
