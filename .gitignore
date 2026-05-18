@@ -1,0 +1,27 @@
+# Local/private user data
+local_data/
+*.local.md
+*.private.md
+
+# Generated drafts and exports
+exports/
+*.pdf
+*.docx
+*.odt
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
